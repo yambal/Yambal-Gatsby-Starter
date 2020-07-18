@@ -16,15 +16,6 @@ export type Scalars = {
 };
 
 
-
-
-
-
-
-
-
-
-
 export type BooleanQueryOperatorInput = {
   eq?: Maybe<Scalars['Boolean']>,
   ne?: Maybe<Scalars['Boolean']>,
@@ -3201,4 +3192,4 @@ export type AuthorsQuery = { site: Maybe<{ siteMetadata: Maybe<{ authors: Maybe<
 export type IndexHogeQueryVariables = {};
 
 
-export type IndexHogeQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type IndexHogeQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, allContentfulPerson: { edges: Array<{ node: Pick<ContentfulPerson, 'title' | 'name' | 'id' | 'contentful_id'> }> } };

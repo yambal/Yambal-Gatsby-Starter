@@ -22,6 +22,13 @@ const Component: React.FC<Props> = ({ data }) => (
         <Link to="/authors/">Go to authors</Link>
       </li>
     </ul>
+    {
+      data.allContentfulPerson.edges.map(
+        edge => {
+          return `${edge.node.name} (${edge.node.title})` 
+        }
+      )
+    }
   </div>
 )
 // ______________________________________________________
@@ -31,6 +38,16 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allContentfulPerson {
+      edges {
+        node {
+          title
+          name
+          id
+          contentful_id
+        }
       }
     }
   }
