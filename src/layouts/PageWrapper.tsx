@@ -1,6 +1,6 @@
 import * as React from "react"
 import Helmet from "react-helmet"
-import Header from "../components/header"
+import { Header } from "../components/header"
 
 import styled from "styled-components"
 import { StaticQuery } from "gatsby"
