@@ -1,10 +1,12 @@
 import { GatsbyNode } from "gatsby"
-import { createAutorPages } from './createAutorPages'
+import { createPersonPages } from './createPersonsPage'
+import { createBlogPostPage } from './createBlogPostPage'
 // ______________________________________________________
 //
 export const createPages: GatsbyNode["createPages"] = async ({
   graphql,
   actions: { createPage }
 }) => Promise.all([
-  await createAutorPages({ graphql, createPage })
+  await createPersonPages({ graphql, createPage }),
+  await createBlogPostPage({ graphql, createPage }),
 ])

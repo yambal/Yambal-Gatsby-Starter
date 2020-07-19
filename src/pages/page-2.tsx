@@ -1,9 +1,10 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { PageWrapper } from "../layouts/PageWrapper"
 // ______________________________________________________
 //
 const Component: React.FC = () => (
-  <div>
+  <PageWrapper description="second page">
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
     <ul>
@@ -11,7 +12,7 @@ const Component: React.FC = () => (
         <Link to="/">Back to top</Link>
       </li>
     </ul>
-  </div>
+  </PageWrapper>
 )
 // ______________________________________________________
 //

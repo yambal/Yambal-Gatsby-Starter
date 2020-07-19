@@ -1,25 +1,27 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { AuthorPageContext } from "../../gatsby-node/createAutorPages"
+import { BlogPostPageContext } from "../../gatsby-node/createBlogPostPage"
+import { PageWrapper } from "../layouts/PageWrapper"
 // ______________________________________________________
 //
 type Props = {
-  pageContext: AuthorPageContext
+  pageContext: BlogPostPageContext
 }
 // ______________________________________________________
 //
 const Component: React.FC<Props> = ({ pageContext }) => (
-  <div>
-    <h1>Author name is {pageContext.author.name}</h1>
+  <PageWrapper description={pageContext.title}>
+    <h1>{pageContext.title}</h1>
+    <div dangerouslySetInnerHTML={{ __html: pageContext.body.childMarkdownRemark.html }} />
     <ul>
       <li>
-        <Link to="/authors/">Back to authors</Link>
+        <Link to="/persons/">Back to authors</Link>
       </li>
       <li>
         <Link to="/">Back to top</Link>
       </li>
     </ul>
-  </div>
+  </PageWrapper>
 )
 // ______________________________________________________
 //

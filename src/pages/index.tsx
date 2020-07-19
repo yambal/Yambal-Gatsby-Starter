@@ -1,15 +1,16 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import { IndexHogeQuery } from "../../types/graphql-types"
+import { IndexHomeQuery } from "../../types/graphql-types"
+import { PageWrapper } from "../layouts/PageWrapper"
 // ______________________________________________________
 //
 type Props = {
-  data: IndexHogeQuery
+  data: IndexHomeQuery
 }
 // ______________________________________________________
 //
 const Component: React.FC<Props> = ({ data }) => (
-  <div>
+  <PageWrapper>
     <h1>Hi people</h1>
     <strong>{data.site?.siteMetadata?.title}</strong> site.
     <p>Welcome to your new </p>
@@ -19,34 +20,35 @@ const Component: React.FC<Props> = ({ data }) => (
         <Link to="/page-2/">Go to page 2</Link>
       </li>
       <li>
-        <Link to="/authors/">Go to authors</Link>
+        <Link to="/persons/">Go to authors</Link>
       </li>
-    </ul>
-    {
-      data.allContentfulPerson.edges.map(
-        edge => {
-          return `${edge.node.name} (${edge.node.title})` 
+      {data.allContentfulBlogPost.edges.map(
+        (post) => {
+          return (
+            <li>
+              <Link to={`/post/${post.node.slug}`}>{post.node.title}</Link>
+            </li>
+          )
         }
-      )
-    }
-  </div>
+      )}
+    </ul>
+  </PageWrapper>
 )
 // ______________________________________________________
 //
 export const pageQuery = graphql`
-  query IndexHoge {
+  query IndexHome {
     site {
       siteMetadata {
         title
       }
     }
-    allContentfulPerson {
+    allContentfulBlogPost {
       edges {
         node {
-          title
-          name
           id
-          contentful_id
+          title
+          slug
         }
       }
     }
